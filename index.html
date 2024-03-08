@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortnight</title>
+  <style>
+  html {
+    overflow: hidden;
+  }
+	body {
+		background-image: url(background.webp);
+		background-color: #cd0000;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+  .img {
+		background-image: url(logo.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+		height: 100vh; /* Ensure the body takes up the full viewport height */
+		margin: 0; /* Remove default margin to ensure full coverage */
+  }
+  </style>
+</head>
+<body>
+  <div class="img"></div>
+	<audio id="audio">
+		<source src="audio.mp3" type="audio/mp3">
+	</audio>
+  <script>
+    var now = new Date();
+    var secondsOfHour = now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
+
+    var audio = document.getElementById('audio');
+    audio.loop = true;
+    audio.currentTime = secondsOfHour;
+
+    audio.play().catch(error => {
+      console.error('Autoplay wurde blockiert: ', error);
+      alert("Wollet Ihr gnädigst das Autoplay-Gewährlaubnis aktivieren?");
+    });
+  </script>
+</body>
+</html>
